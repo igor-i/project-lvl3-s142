@@ -3,19 +3,16 @@
 use Laravel\Lumen\Testing\DatabaseMigrations;
 use Laravel\Lumen\Testing\DatabaseTransactions;
 
-class ExampleTest extends TestCase
+class HomeTest extends TestCase
 {
     /**
-     * A basic test example.
+     * A basic response test.
      *
      * @return void
      */
-//    public function testExample()
-//    {
-//        $this->get('/');
-//
-//        $this->assertEquals(
-//            $this->app->version(), $this->response->getContent()
-//        );
-//    }
+    public function testResponse()
+    {
+        $this->get('/');
+        $this->assertResponseOk();
+    }
 }
