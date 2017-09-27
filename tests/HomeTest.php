@@ -10,9 +10,9 @@ class HomeTest extends TestCase
      *
      * @return void
      */
-    public function testResponse()
+    public function testApplication()
     {
-        $this->get('/');
-        $this->assertResponseOk();
+        $response = $this->call('GET', '/');
+        $this->assertEquals(200, $response->status());
     }
 }
