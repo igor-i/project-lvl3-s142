@@ -1,6 +1,6 @@
 lint:
 	composer update
-	composer run-script phpcs -- --standard=PSR2 public
+	composer run-script phpcs -- --standard=PSR2 public resources
 test:
 	phpunit
 install:
