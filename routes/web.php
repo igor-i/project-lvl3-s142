@@ -11,10 +11,12 @@
 |
 */
 
-//$router->get('/', function () use ($router) {
-//    return $router->app->version();
-//});
-
 $router->get('/', ['as' => 'home', function () use ($router) {
     return view('home');
 }]);
+
+$router->get('domains/{id}', ['uses' => 'DomainsController@showItem', 'as' => 'showItemDomain']);
+
+$router->get('domains', ['uses' => 'DomainsController@showAll', 'as' => 'showAllDomains']);
+
+$router->post('domains', ['uses' => 'DomainsController@store', 'as' => 'storeDomain']);
