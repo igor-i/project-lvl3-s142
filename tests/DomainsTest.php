@@ -13,12 +13,14 @@ class DomainsTest extends TestCase
      *
      * @return void
      */
-    public function testApplication()
-    {
-        $response = $this->call('GET', 'domains');
-        $this->assertEquals(200, $response->status());
-    }
+//    public function testApplication()
+//    {
+//        $response = $this->call('GET', 'domains');
+//        $this->assertEquals(200, $response->status());
+//    }
 
+//    TODO: переделать тест на in_memory sqllite,
+//    TODO: а так же чтобы он использовал route('storeDomain', [['url' => 'http://testdatabase.com']]);
 //    public function testDatabase()
 //    {
 //        $id = DB::table('domains')->insertGetId(
