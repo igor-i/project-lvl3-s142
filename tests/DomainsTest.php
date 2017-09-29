@@ -1,12 +1,12 @@
 <?php
 
-use Laravel\Lumen\Testing\DatabaseMigrations;
+//use Laravel\Lumen\Testing\DatabaseMigrations;
 
-use \Carbon\Carbon;
+//use \Carbon\Carbon;
 
 class DomainsTest extends TestCase
 {
-    use DatabaseMigrations;
+//    use DatabaseMigrations;
 
     /**
      * A basic response test.
