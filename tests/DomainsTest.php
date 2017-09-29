@@ -1,6 +1,6 @@
 <?php
 
-use Laravel\Lumen\Testing\DatabaseMigrations;
+//use Laravel\Lumen\Testing\DatabaseMigrations;
 
 use \Carbon\Carbon;
 
@@ -19,8 +19,8 @@ class DomainsTest extends TestCase
         $this->assertEquals(200, $response->status());
     }
 
-    public function testDatabase()
-    {
+//    public function testDatabase()
+//    {
 //        $id = DB::table('domains')->insertGetId(
 //            [
 //                'name' => 'http://testdatabase.com',
@@ -28,5 +28,5 @@ class DomainsTest extends TestCase
 //            ]
 //        );
 //        $this->seeInDatabase('domains', ['id' => $id]);
-    }
+//    }
 }
