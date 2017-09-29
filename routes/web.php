@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -11,12 +10,52 @@
 |
 */
 
+use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\DB;
+
+use Carbon\Carbon;
+
+/*
+ * Home
+ */
 $router->get('/', ['as' => 'home', function () use ($router) {
+
     return view('home');
 }]);
 
-$router->get('domains/{id}', ['uses' => 'DomainsController@showItem', 'as' => 'showItemDomain']);
+/*
+ * Domains/{id}
+ */
+$router->get('domains/{id}', ['as' => 'domains.show', function ($id) {
+    $domain = DB::table('domains')->where('id', $id)->first();
 
-$router->get('domains', ['uses' => 'DomainsController@showAll', 'as' => 'showAllDomains']);
+    return view('domains', ['domains' => [$domain]]);
+}]);
 
-$router->post('domains', ['uses' => 'DomainsController@store', 'as' => 'storeDomain']);
+/*
+ * Domains
+ */
+$router->get('domains', ['as' => 'domains.index', function () {
+    $domains = DB::table('domains')->get();
+
+    return view('domains', ['domains' => $domains]);
+}]);
+
+/*
+ * Form
+ */
+$router->post('domains', ['as' => 'domains.store', function (Request $request) {
+    $this->validate($request, ['url' => 'active_url']);
+
+    $url = $request->input('url');
+
+    $id = DB::table('domains')->insertGetId(
+        [
+            'name' => $url,
+            'created_at' => Carbon::now()
+        ]
+    );
+
+    return redirect()->route('domains.show', ['id' => $id]);
+}]);

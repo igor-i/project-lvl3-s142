@@ -26,7 +26,7 @@
                     <a class="nav-link" href="{{ route('home') }}">Home @yield('homeIsCurrent')</a>
                 </li>
                 <li class="nav-item @yield('domainsIsActive')">
-                    <a class="nav-link" href="{{ route('showAllDomains') }}">Domains @yield('domainsIsCurrent')</a>
+                    <a class="nav-link" href="{{ route('domains.index') }}">Domains @yield('domainsIsCurrent')</a>
                 </li>
             </ul>
         </div>

@@ -19,7 +19,7 @@
         <hr class="my-4">
         <p>Enter webpage URL for test:</p>
         <p>
-        <form action="{{ route('storeDomain') }}" method="POST" class="form-inline">
+        <form action="{{ route('domains.store') }}" method="POST" class="form-inline">
             <div class="form-group mx-sm-3">
                 <label for="inputUrl" class="sr-only">https://example.com</label>
                 <input type="text" name="url" id="inputUrl" required class="form-control" placeholder="https://example.com">
