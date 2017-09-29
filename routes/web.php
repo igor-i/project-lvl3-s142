@@ -12,9 +12,7 @@
 */
 
 $router->get('/', ['as' => 'home', function () use ($router) {
-//    return view('home');
-    $environment = app()->environment();
-    return $environment;
+    return view('home');
 }]);
 
 $router->get('domains/{id}', ['uses' => 'DomainsController@showItem', 'as' => 'showItemDomain']);
