@@ -9,7 +9,7 @@ use Carbon\Carbon;
 class DomainsTest extends TestCase
 {
 
-    use DatabaseMigrations;
+//    use DatabaseMigrations;
 
     /**
      * Creates the application.
