@@ -12,15 +12,14 @@ class DomainsTest extends TestCase
     use DatabaseMigrations;
 
     /**
-     * @return mixed
+     * Creates the application.
+     *
+     * @return \Laravel\Lumen\Application
      */
     public function createApplication()
     {
         putenv('DB_DEFAULT=sqlite_testing');
-        $app = require __DIR__ . '/../bootstrap/app.php';
-        $app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
-
-        return $app;
+        return require __DIR__.'/../bootstrap/app.php';
     }
 
     /**
