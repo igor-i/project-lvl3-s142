@@ -17,7 +17,7 @@ class DomainsTest extends TestCase
     public function createApplication()
     {
         putenv('DB_DEFAULT=sqlite_testing');
-        $app = require __DIR__ . '/../../bootstrap/app.php';
+        $app = require __DIR__ . '/../bootstrap/app.php';
         $app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
 
         return $app;
