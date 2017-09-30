@@ -59,6 +59,7 @@ class DomainsTest extends TestCase
                 'created_at' => Carbon::now()
             ]
         );
+        echo "YES bitch: {$id} %))))))";
         $this->seeInDatabase('domains', ['id' => $id]);
     }
 
