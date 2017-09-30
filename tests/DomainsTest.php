@@ -23,23 +23,6 @@ class DomainsTest extends TestCase
         parent::tearDown();
     }
 
-    /**
-     * A basic response test.
-     *
-     * @return void
-     */
-    public function testApplication()
-    {
-        $id = DB::table('domains')->insertGetId(
-            [
-                'name' => 'http://test.com',
-                'created_at' => Carbon::now()
-            ]
-        );
-        $response = $this->call('GET', 'domains');
-        $this->assertEquals(200, $response->status());
-    }
-
 //    TODO: чтобы он использовал route('storeDomain', [['url' => 'http://testdatabase.com']]);
     public function testDatabase()
     {
@@ -49,7 +32,12 @@ class DomainsTest extends TestCase
                 'created_at' => Carbon::now()
             ]
         );
-        echo "YES bitch: {$id} %))))))";
         $this->seeInDatabase('domains', ['id' => $id]);
+    }
+
+    public function testApplication()
+    {
+        $response = $this->call('GET', 'domains');
+        $this->assertEquals(200, $response->status());
     }
 }
