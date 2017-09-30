@@ -36,7 +36,7 @@ class DomainsTest extends TestCase
 //            ]
 //        );
         $row = DB::table('domains')->where('id', '1')->first();
-        echo "++++++ name: {$row->name} ++++++";
+//        echo "++++++ name: {$row->name} ++++++";
         print_r($row);
         echo '+++++ 3 +++++';
         $this->seeInDatabase('domains', ['name' => 'http://test.com']);
