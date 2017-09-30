@@ -1,14 +1,27 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
+
 use Laravel\Lumen\Testing\DatabaseMigrations;
 
 use Carbon\Carbon;
 
-use Illuminate\Support\Facades\Artisan;
-
 class DomainsTest extends TestCase
 {
+
     use DatabaseMigrations;
+
+    /**
+     * @return mixed
+     */
+    public function createApplication()
+    {
+        putenv('DB_DEFAULT=sqlite_testing');
+        $app = require __DIR__ . '/../../bootstrap/app.php';
+        $app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
+
+        return $app;
+    }
 
     /**
      * A basic response test.
@@ -21,8 +34,7 @@ class DomainsTest extends TestCase
         $this->assertEquals(200, $response->status());
     }
 
-//    TODO: переделать тест на in_memory sqllite,
-//    TODO: а так же чтобы он использовал route('storeDomain', [['url' => 'http://testdatabase.com']]);
+//    TODO: чтобы он использовал route('storeDomain', [['url' => 'http://testdatabase.com']]);
     public function testDatabase()
     {
         $id = DB::table('domains')->insertGetId(

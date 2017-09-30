@@ -6,9 +6,4 @@ install:
   - composer self-update
   - make install
 
-test:
-  adapter: sqlite3
-  database: ":memory:"
-  timeout: 500
-
 script: make lint test
