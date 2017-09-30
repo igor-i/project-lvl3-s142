@@ -25,16 +25,16 @@ class DomainsTest extends TestCase
 //        parent::createApplication();
 //    }
 
-    public function __construct($name = null, array $data = [], $dataName = '')
-    {
-        parent::__construct($name, $data, $dataName);
-        putenv('DB_CONNECTION=testing');
+//    public function __construct($name = null, array $data = [], $dataName = '')
+//    {
+//        parent::__construct($name, $data, $dataName);
+//        putenv('DB_CONNECTION=testing');
 //        $db = app('db');
 //        $this->testDb = $db->connection('testing');
-        echo '1Путин - хуй!';
-        Artisan::call('migrate');
-        echo '2Путин - хуй!';
-    }
+//        echo '1Путин - хуй!';
+//        Artisan::call('migrate');
+//        echo '2Путин - хуй!';
+//    }
 
     /**
      * A basic response test.
@@ -63,15 +63,17 @@ class DomainsTest extends TestCase
         $this->seeInDatabase('domains', ['id' => $id]);
     }
 
-//    public function setUp()
-//    {
-//        parent::setUp();
-//        Artisan::call('migrate');
-//    }
-//
-//    public function tearDown()
-//    {
-//        Artisan::call('migrate:reset');
-//        parent::tearDown();
-//    }
+    public function setUp()
+    {
+        putenv('DB_CONNECTION=testing');
+        parent::setUp();
+        Artisan::call('migrate');
+    }
+
+    public function tearDown()
+    {
+        putenv('DB_CONNECTION=testing');
+        Artisan::call('migrate:reset');
+        parent::tearDown();
+    }
 }
