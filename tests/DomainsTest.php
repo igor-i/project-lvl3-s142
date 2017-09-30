@@ -48,6 +48,8 @@ class DomainsTest extends TestCase
 //    TODO: чтобы он использовал route('storeDomain', [['url' => 'http://testdatabase.com']]);
     public function testDatabase()
     {
+        $f = DB::table('migration')->first();
+        print_r($f);
         $id = DB::table('domains')->insertGetId(
             [
                 'name' => 'http://test.com',
