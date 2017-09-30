@@ -30,11 +30,11 @@ class DomainsTest extends TestCase
      *
      * @return void
      */
-    public function testApplication()
-    {
-        $response = $this->call('GET', 'domains');
-        $this->assertEquals(200, $response->status());
-    }
+//    public function testApplication()
+//    {
+//        $response = $this->call('GET', 'domains');
+//        $this->assertEquals(200, $response->status());
+//    }
 
 //    TODO: чтобы он использовал route('storeDomain', [['url' => 'http://testdatabase.com']]);
     public function testDatabase()
