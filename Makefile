@@ -1,5 +1,4 @@
 lint:
-	composer update
 	composer run-script phpcs -- --standard=PSR2 public app/Http/Controllers
 test:
 	phpunit
