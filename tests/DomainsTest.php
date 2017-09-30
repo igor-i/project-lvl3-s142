@@ -28,10 +28,12 @@ class DomainsTest extends TestCase
     public function __construct($name = null, array $data = [], $dataName = '')
     {
         parent::__construct($name, $data, $dataName);
-        putenv('DB_CONNECTION=testing');
+//        putenv('DB_CONNECTION=testing');
 //        $db = app('db');
 //        $this->testDb = $db->connection('testing');
-//        Artisan::call('migrate');
+        echo '1Путин - хуй!';
+        Artisan::call('migrate');
+        echo '2Путин - хуй!';
     }
 
     /**
@@ -48,7 +50,7 @@ class DomainsTest extends TestCase
 //    TODO: чтобы он использовал route('storeDomain', [['url' => 'http://testdatabase.com']]);
     public function testDatabase()
     {
-        echo 'Путин - хуй!';
+        echo '3Путин - хуй!';
         $f = DB::table('migration')->first();
         print_r($f);
         $id = DB::table('domains')->insertGetId(
