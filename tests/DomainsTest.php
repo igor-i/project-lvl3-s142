@@ -23,12 +23,13 @@ class DomainsTest extends TestCase
         parent::tearDown();
     }
 
-//    TODO: чтобы он использовал route('storeDomain', [['url' => 'http://testdatabase.com']]);
     public function testForm()
     {
-        echo '+++++ 1 +++++';
+        $count = DB::table('domains')->count();
+        echo "+++++ 1: {$count} +++++";
         $this->call('POST', 'domains', ['url' => 'http%3A%2F%2Ftest.com']);
-        echo '+++++ 2 +++++';
+        $count = DB::table('domains')->count();
+        echo "+++++ 2: {$count} +++++";
 //        $id = DB::table('domains')->insertGetId(
 //            [
 //                'name' => 'http://test.com',
@@ -38,7 +39,8 @@ class DomainsTest extends TestCase
         $row = DB::table('domains')->where('id', '1')->first();
 //        echo "++++++ name: {$row->name} ++++++";
         print_r($row);
-        echo '+++++ 3 +++++';
+        $count = DB::table('domains')->count();
+        echo "+++++ 3: {$count} +++++";
         $this->seeInDatabase('domains', ['name' => 'http://test.com']);
         echo '+++++ 4 +++++';
     }
