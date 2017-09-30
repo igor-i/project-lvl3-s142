@@ -31,7 +31,7 @@ class DomainsTest extends TestCase
         putenv('DB_CONNECTION=testing');
 //        $db = app('db');
 //        $this->testDb = $db->connection('testing');
-        Artisan::call('migrate');
+//        Artisan::call('migrate');
     }
 
     /**
