@@ -1,6 +1,7 @@
 lint:
 	composer run-script phpcs -- --standard=PSR2 public app/Http/Controllers
 test:
+	php artisan migrate:install --database=sqlite_testing
 	phpunit
 install:
 	composer install
