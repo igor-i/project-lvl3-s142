@@ -1,7 +1,7 @@
 lint:
-	composer run-script phpcs -- --standard=PSR2 public app/Http/Controllers
+	composer run-script phpcs -- --standard=PSR2 public routes tests
 test:
-	php artisan migrate:install --database=sqlite_testing
+	php artisan migrate:install --database=testing
 	phpunit
 install:
 	composer install

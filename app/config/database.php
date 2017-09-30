@@ -1,17 +1,22 @@
 <?php
 return [
-    'default' => env('DB_DEFAULT', 'sqlite'),
+//    'default' => env('DB_DEFAULT', 'sqlite'),
+    'default' => env('DB_CONNECTION', 'sqlite'),
+
     'migrations' => 'migrations',
+
     'connections' => [
-        '' => [
-            'sqlite_testing'   => 'sqlite',
+
+        'testing' => [
+            'driver' => 'sqlite',
             'database' => ':memory:',
-            'prefix'   => '',
         ],
+
         'sqlite' => [
             'driver'    => 'sqlite',
             'database'  => env('DB_DATABASE', '/Users/Inkovskiy/Sites/Page Analyzer/database/database.sqlite'),
-            'prefix'    => ''
+            'prefix'   => env('DB_PREFIX', '')
         ],
+        
     ],
 ];
