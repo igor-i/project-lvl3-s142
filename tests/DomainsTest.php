@@ -26,7 +26,9 @@ class DomainsTest extends TestCase
 //    TODO: чтобы он использовал route('storeDomain', [['url' => 'http://testdatabase.com']]);
     public function testForm()
     {
+        echo '+++++ 1 +++++';
         $this->call('POST', 'domains', ['url' => 'http%3A%2F%2Ftest.com']);
+        echo '+++++ 2 +++++';
 //        $id = DB::table('domains')->insertGetId(
 //            [
 //                'name' => 'http://test.com',
@@ -34,7 +36,9 @@ class DomainsTest extends TestCase
 //            ]
 //        );
         echo DB::table('domains')->first();
+        echo '+++++ 3 +++++';
         $this->seeInDatabase('domains', ['url' => 'http://test.com']);
+        echo '+++++ 4 +++++';
     }
 
     public function testApplication()
