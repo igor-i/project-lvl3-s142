@@ -3,8 +3,8 @@ return [
     'default' => env('DB_DEFAULT', 'sqlite'),
     'migrations' => 'migrations',
     'connections' => [
-        'sqlite_testing' => [
-            'driver'   => 'sqlite',
+        '' => [
+            'sqlite_testing'   => 'sqlite',
             'database' => ':memory:',
             'prefix'   => '',
         ],
