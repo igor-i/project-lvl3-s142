@@ -27,8 +27,8 @@ class DomainsTest extends TestCase
     {
         parent::__construct($name, $data, $dataName);
         putenv('DB_CONNECTION=testing');
-        $db = app('db');
-        $this->testDb = $db->connection('testing');
+//        $db = app('db');
+//        $this->testDb = $db->connection('testing');
         Artisan::call('migrate');
     }
 
