@@ -21,13 +21,13 @@ class DomainsTest extends TestCase
 
     public function testForm()
     {
-        $this->post('domains', ['url' => 'http://test.com']);
-        $this->seeInDatabase('domains', ['name' => 'http://test.com']);
+        $this->post('domains', ['url' => 'http://ya.ru']);
+        $this->seeInDatabase('domains', ['name' => 'http://ya.ru']);
     }
 
     public function testApplication()
     {
-        $this->post('domains', ['url' => 'http://test.com']);
+        $this->post('domains', ['url' => 'http://ya.ru']);
         $response = $this->get('domains');
         $this->assertEquals(200, $response->status());
     }
