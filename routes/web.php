@@ -30,7 +30,7 @@ $router->get('/', ['as' => 'home', function () use ($router) {
 $router->get('domains/{id}', ['as' => 'domains.show', function ($id) {
     $domain = DB::table('domains')->where('id', $id)->first();
 
-    return view('domains', ['domains' => [$domain]]);
+    return view('domain', ['domain' => $domain]);
 }]);
 
 /*
