@@ -1,14 +1,16 @@
 <?php
 
-use Illuminate\Support\Facades\Artisan;
+namespace UnitTests;
 
-use Illuminate\Database\DatabaseManager;
+//use Illuminate\Support\Facades\Artisan;
+
+//use Illuminate\Database\DatabaseManager;
 
 //use Laravel\Lumen\Testing\DatabaseMigrations;
 
 use Carbon\Carbon;
 
-class DomainsTest extends TestCase
+class DomainsTest extends \TestCase
 {
 
 //    use DatabaseMigrations;

@@ -1,6 +1,8 @@
 <?php
 
-class HomeTest extends TestCase
+namespace UnitTests;
+
+class HomeTest extends \TestCase
 {
     /**
      * A basic response test.
