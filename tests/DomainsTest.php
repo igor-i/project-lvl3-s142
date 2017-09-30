@@ -19,11 +19,11 @@ class DomainsTest extends TestCase
 
 //    public $testDb;
 
-    public function createApplication()
-    {
-        putenv('DB_CONNECTION=testing');
-        parent::createApplication();
-    }
+//    public function createApplication()
+//    {
+//        putenv('DB_CONNECTION=testing');
+//        parent::createApplication();
+//    }
 
     public function __construct($name = null, array $data = [], $dataName = '')
     {
