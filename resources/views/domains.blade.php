@@ -20,7 +20,9 @@
                 <thead>
                 <tr>
                     @foreach ($domains[0] as $key => $item)
-                        <th>{{ $key }}</th>
+                        @if ($key !== 'body')
+                            <th>{{ $key }}</th>
+                        @endif
                     @endforeach
                 </tr>
                 </thead>
@@ -32,7 +34,7 @@
                                 <th scope="row">{{ $item }}</th>
                             @elseif ($key === 'name')
                                 <td><a href="/domains/{{ $domain->id }}">{{ $item }}</a></td>
-                            @else
+                            @elseif ($key !== 'body')
                                 <td>{{ $item }}</td>
                             @endif
                         @endforeach

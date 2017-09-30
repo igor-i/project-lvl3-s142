@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\DB;
 
 use Carbon\Carbon;
 
+use GuzzleHttp\Client;
+
 /*
  * Home
  */
@@ -47,12 +49,23 @@ $router->get('domains', ['as' => 'domains.index', function () {
  */
 $router->post('domains', ['as' => 'domains.store', function (Request $request) {
     $this->validate($request, ['url' => 'active_url']);
-
     $url = $request->input('url');
+
+    $client = new Client(['base_uri' => $url]);
+    $response = $client->request('GET');
+    $code = (int) $response->getStatusCode();
+    if ($response->hasHeader('Content-Length')) {
+        $contentLengthArray = $response->getHeader('Content-Length');
+    }
+    $contentLength = empty($contentLengthArray) ? null : (int) $contentLengthArray[0];
+    $body = (string) $response->getBody();
 
     $id = DB::table('domains')->insertGetId(
         [
             'name' => $url,
+            'content_length' => $contentLength,
+            'code' => $code,
+            'body' => $body,
             'created_at' => Carbon::now()
         ]
     );
