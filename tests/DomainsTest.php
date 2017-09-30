@@ -2,18 +2,18 @@
 
 namespace UnitTests;
 
-//use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Artisan;
 
-//use Illuminate\Database\DatabaseManager;
+use Illuminate\Database\DatabaseManager;
 
-//use Laravel\Lumen\Testing\DatabaseMigrations;
+use Laravel\Lumen\Testing\DatabaseMigrations;
 
 use Carbon\Carbon;
 
 class DomainsTest extends TestCase
 {
 
-//    use DatabaseMigrations;
+    use DatabaseMigrations;
 
     public $testDb;
 
@@ -48,15 +48,15 @@ class DomainsTest extends TestCase
         $this->seeInDatabase('domains', ['id' => $id]);
     }
 
-//    public function setUp()
-//    {
-//        parent::setUp();
-//        Artisan::call('migrate');
-//    }
-//
-//    public function tearDown()
-//    {
-//        Artisan::call('migrate:reset');
-//        parent::tearDown();
-//    }
+    public function setUp()
+    {
+        parent::setUp();
+        Artisan::call('migrate');
+    }
+
+    public function tearDown()
+    {
+        Artisan::call('migrate:reset');
+        parent::tearDown();
+    }
 }
