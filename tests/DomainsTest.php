@@ -23,6 +23,7 @@ class DomainsTest extends TestCase
         putenv('DB_CONNECTION=testing');
         $db = app('db');
         $this->testDb = $db->connection('testing');
+        Artisan::call('migrate');
     }
 
     /**
@@ -48,15 +49,15 @@ class DomainsTest extends TestCase
         $this->seeInDatabase('domains', ['id' => $id]);
     }
 
-    public function setUp()
-    {
-        parent::setUp();
-        Artisan::call('migrate');
-    }
-
-    public function tearDown()
-    {
-        Artisan::call('migrate:reset');
-        parent::tearDown();
-    }
+//    public function setUp()
+//    {
+//        parent::setUp();
+//        Artisan::call('migrate');
+//    }
+//
+//    public function tearDown()
+//    {
+//        Artisan::call('migrate:reset');
+//        parent::tearDown();
+//    }
 }
