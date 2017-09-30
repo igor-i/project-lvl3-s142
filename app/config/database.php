@@ -1,6 +1,5 @@
 <?php
 return [
-//    'default' => env('DB_DEFAULT', 'sqlite'),
     'default' => env('DB_CONNECTION', 'sqlite'),
 
     'migrations' => 'migrations',
@@ -17,6 +16,6 @@ return [
             'database'  => env('DB_DATABASE', '/Users/Inkovskiy/Sites/Page Analyzer/database/database.sqlite'),
             'prefix'   => env('DB_PREFIX', '')
         ],
-        
+
     ],
 ];

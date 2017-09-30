@@ -27,7 +27,7 @@ class DomainsTest extends TestCase
     {
         $count = DB::table('domains')->count();
         echo "+++++ 1: {$count} +++++";
-        $this->call('POST', 'domains', ['url' => 'http%3A%2F%2Ftest.com']);
+        $this->call('POST', 'domains', ['url' => 'http://test.com']);
         $count = DB::table('domains')->count();
         echo "+++++ 2: {$count} +++++";
         $id = DB::table('domains')->insertGetId(
