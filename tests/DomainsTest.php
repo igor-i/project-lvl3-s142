@@ -30,12 +30,12 @@ class DomainsTest extends TestCase
         $this->call('POST', 'domains', ['url' => 'http://test.com']);
         $count = DB::table('domains')->count();
         echo "+++++ 2: {$count} +++++";
-        $id = DB::table('domains')->insertGetId(
-            [
-                'name' => 'http://test.com',
-                'created_at' => Carbon::now()
-            ]
-        );
+//        $id = DB::table('domains')->insertGetId(
+//            [
+//                'name' => 'http://test.com',
+//                'created_at' => Carbon::now()
+//            ]
+//        );
         $count = DB::table('domains')->count();
         echo "+++++ 3: {$count} +++++";
         $row = DB::table('domains')->where('id', '1')->first();
