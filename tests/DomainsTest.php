@@ -51,7 +51,7 @@ class DomainsTest extends TestCase
     public function testDatabase()
     {
         echo '3Путин - хуй!';
-        $f = DB::table('migration')->first();
+        $f = DB::table('migrations')->first();
         print_r($f);
         $id = DB::table('domains')->insertGetId(
             [
