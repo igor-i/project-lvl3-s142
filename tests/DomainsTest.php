@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Artisan;
 
 //use Illuminate\Database\DatabaseManager;
 
-use Laravel\Lumen\Testing\DatabaseMigrations;
+//use Laravel\Lumen\Testing\DatabaseMigrations;
 
 use Illuminate\Support\Facades\DB;
 
@@ -15,26 +15,7 @@ use Carbon\Carbon;
 class DomainsTest extends TestCase
 {
 
-    use DatabaseMigrations;
-
-//    public $testDb;
-
-//    public function createApplication()
-//    {
-//        putenv('DB_CONNECTION=testing');
-//        parent::createApplication();
-//    }
-
-//    public function __construct($name = null, array $data = [], $dataName = '')
-//    {
-//        parent::__construct($name, $data, $dataName);
-//        putenv('DB_CONNECTION=testing');
-//        $db = app('db');
-//        $this->testDb = $db->connection('testing');
-//        echo '1Путин - хуй!';
-//        Artisan::call('migrate');
-//        echo '2Путин - хуй!';
-//    }
+//    use DatabaseMigrations;
 
     /**
      * A basic response test.
@@ -72,7 +53,7 @@ class DomainsTest extends TestCase
 
     public function tearDown()
     {
-        putenv('DB_CONNECTION=testing');
+//        putenv('DB_CONNECTION=testing');
         Artisan::call('migrate:reset');
         parent::tearDown();
     }
