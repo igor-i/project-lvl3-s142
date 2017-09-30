@@ -39,7 +39,7 @@ $router->get('domains/{id}', ['as' => 'domains.show', function ($id) {
  * Domains
  */
 $router->get('domains', ['as' => 'domains.index', function () {
-    $domains = DB::table('domains')->paginate(2);
+    $domains = DB::table('domains')->paginate(5);
 
     return view('domains', ['domains' => $domains]);
 }]);
