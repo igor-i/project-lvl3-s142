@@ -2,24 +2,25 @@
 
 use Illuminate\Support\Facades\Artisan;
 
-//use Laravel\Lumen\Testing\DatabaseMigrations;
+use Illuminate\Database\DatabaseManager;
+
+use Laravel\Lumen\Testing\DatabaseMigrations;
 
 use Carbon\Carbon;
 
 class DomainsTest extends TestCase
 {
 
-//    use DatabaseMigrations;
+    use DatabaseMigrations;
 
-    /**
-     * Creates the application.
-     *
-     * @return \Laravel\Lumen\Application
-     */
-    public function createApplication()
+    public $testDb;
+
+    public function __construct($name = null, array $data = [], $dataName = '')
     {
+        parent::__construct($name, $data, $dataName);
         putenv('DB_DEFAULT=sqlite_testing');
-        return require __DIR__.'/../bootstrap/app.php';
+        $db = app('db');
+        $this->testDb = $db->connection('sqlite_testing');
     }
 
     /**
@@ -36,7 +37,7 @@ class DomainsTest extends TestCase
 //    TODO: чтобы он использовал route('storeDomain', [['url' => 'http://testdatabase.com']]);
     public function testDatabase()
     {
-        $id = DB::table('domains')->insertGetId(
+        $id = $this->testDb->table('domains')->insertGetId(
             [
                 'name' => 'http://test.com',
                 'created_at' => Carbon::now()
