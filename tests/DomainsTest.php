@@ -30,19 +30,21 @@ class DomainsTest extends TestCase
         $this->call('POST', 'domains', ['url' => 'http%3A%2F%2Ftest.com']);
         $count = DB::table('domains')->count();
         echo "+++++ 2: {$count} +++++";
-//        $id = DB::table('domains')->insertGetId(
-//            [
-//                'name' => 'http://test.com',
-//                'created_at' => Carbon::now()
-//            ]
-//        );
+        $id = DB::table('domains')->insertGetId(
+            [
+                'name' => 'http://test.com',
+                'created_at' => Carbon::now()
+            ]
+        );
+        $count = DB::table('domains')->count();
+        echo "+++++ 3: {$count} +++++";
         $row = DB::table('domains')->where('id', '1')->first();
 //        echo "++++++ name: {$row->name} ++++++";
         print_r($row);
         $count = DB::table('domains')->count();
-        echo "+++++ 3: {$count} +++++";
+        echo "+++++ 4: {$count} +++++";
         $this->seeInDatabase('domains', ['name' => 'http://test.com']);
-        echo '+++++ 4 +++++';
+        echo '+++++ 5 +++++';
     }
 
     public function testApplication()
