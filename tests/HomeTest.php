@@ -2,7 +2,7 @@
 
 namespace UnitTests;
 
-class HomeTest extends \TestCase
+class HomeTest extends TestCase
 {
     /**
      * A basic response test.

@@ -10,7 +10,7 @@ namespace UnitTests;
 
 use Carbon\Carbon;
 
-class DomainsTest extends \TestCase
+class DomainsTest extends TestCase
 {
 
 //    use DatabaseMigrations;
