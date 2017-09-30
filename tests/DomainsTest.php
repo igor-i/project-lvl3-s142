@@ -24,15 +24,16 @@ class DomainsTest extends TestCase
     }
 
 //    TODO: чтобы он использовал route('storeDomain', [['url' => 'http://testdatabase.com']]);
-    public function testDatabase()
+    public function testForm()
     {
-        $id = DB::table('domains')->insertGetId(
-            [
-                'name' => 'http://test.com',
-                'created_at' => Carbon::now()
-            ]
-        );
-        $this->seeInDatabase('domains', ['id' => $id]);
+        $this->call('POST', 'domains', ['url' => 'http%3A%2F%2Ftest.com']);
+//        $id = DB::table('domains')->insertGetId(
+//            [
+//                'name' => 'http://test.com',
+//                'created_at' => Carbon::now()
+//            ]
+//        );
+        $this->seeInDatabase('domains', ['url' => 'http%3A%2F%2Ftest.com']);
     }
 
     public function testApplication()
