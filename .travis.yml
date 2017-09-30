@@ -5,5 +5,7 @@ php:
 install:
   - composer self-update
   - make install
+  - ActiveRecord::Base.establish_connection :adapter => 'sqlite3',
+                                            :database => ':memory:'
 
 script: make lint test
