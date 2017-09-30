@@ -4,9 +4,11 @@ namespace UnitTests;
 
 use Illuminate\Support\Facades\Artisan;
 
-use Illuminate\Database\DatabaseManager;
+//use Illuminate\Database\DatabaseManager;
 
 use Laravel\Lumen\Testing\DatabaseMigrations;
+
+use Illuminate\Support\Facades\DB;
 
 use Carbon\Carbon;
 
@@ -15,7 +17,7 @@ class DomainsTest extends TestCase
 
     use DatabaseMigrations;
 
-    public $testDb;
+//    public $testDb;
 
     public function createApplication()
     {
@@ -46,7 +48,7 @@ class DomainsTest extends TestCase
 //    TODO: чтобы он использовал route('storeDomain', [['url' => 'http://testdatabase.com']]);
     public function testDatabase()
     {
-        $id = $this->testDb->table('domains')->insertGetId(
+        $id = DB::table('domains')->insertGetId(
             [
                 'name' => 'http://test.com',
                 'created_at' => Carbon::now()
