@@ -31,7 +31,7 @@
                         @if ($key === 'id')
                             <th scope="row">{{ $item }}</th>
                         @elseif ($key === 'name')
-                            <td><a href="domains/{{ $domain->id }}">{{ $item }}</a></td>
+                            <td><a href="/domains/{{ $domain->id }}">{{ $item }}</a></td>
                         @else
                             <td>{{ $item }}</td>
                         @endif
