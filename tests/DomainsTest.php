@@ -13,9 +13,15 @@ use Carbon\Carbon;
 class DomainsTest extends TestCase
 {
 
-//    use DatabaseMigrations;
+    use DatabaseMigrations;
 
     public $testDb;
+
+    public function createApplication()
+    {
+        putenv('DB_CONNECTION=testing');
+        parent::createApplication();
+    }
 
     public function __construct($name = null, array $data = [], $dataName = '')
     {
