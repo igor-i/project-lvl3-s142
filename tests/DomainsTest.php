@@ -4,10 +4,6 @@ namespace UnitTests;
 
 use Illuminate\Support\Facades\Artisan;
 
-use Illuminate\Support\Facades\DB;
-
-use Carbon\Carbon;
-
 class DomainsTest extends TestCase
 {
     public function setUp()
@@ -25,36 +21,13 @@ class DomainsTest extends TestCase
 
     public function testForm()
     {
-        $count = DB::table('domains')->count();
-        echo "+++++ 1: {$count} +++++";
         $this->call('POST', 'domains', ['url' => 'http://test.com']);
-        $count = DB::table('domains')->count();
-        echo "+++++ 2: {$count} +++++";
-//        $id = DB::table('domains')->insertGetId(
-//            [
-//                'name' => 'http://test.com',
-//                'created_at' => Carbon::now()
-//            ]
-//        );
-        $count = DB::table('domains')->count();
-        echo "+++++ 3: {$count} +++++";
-        $row = DB::table('domains')->where('id', '1')->first();
-//        echo "++++++ name: {$row->name} ++++++";
-        print_r($row);
-        $count = DB::table('domains')->count();
-        echo "+++++ 4: {$count} +++++";
         $this->seeInDatabase('domains', ['name' => 'http://test.com']);
-        echo '+++++ 5 +++++';
     }
 
     public function testApplication()
     {
-        DB::table('domains')->insertGetId(
-            [
-                'name' => 'http://test.com',
-                'created_at' => Carbon::now()
-            ]
-        );
+        $this->call('POST', 'domains', ['url' => 'http://test.com']);
         $response = $this->call('GET', 'domains');
         $this->assertEquals(200, $response->status());
     }
