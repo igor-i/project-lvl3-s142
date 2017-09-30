@@ -35,9 +35,11 @@ class DomainsTest extends TestCase
 //                'created_at' => Carbon::now()
 //            ]
 //        );
-        print_r(DB::table('domains')->first());
+        $row = DB::table('domains')->where('id', '1')->first();
+        echo "++++++ name: {$row->name} ++++++";
+        print_r($row);
         echo '+++++ 3 +++++';
-        $this->seeInDatabase('domains', ['url' => 'http://test.com']);
+        $this->seeInDatabase('domains', ['name' => 'http://test.com']);
         echo '+++++ 4 +++++';
     }
 
