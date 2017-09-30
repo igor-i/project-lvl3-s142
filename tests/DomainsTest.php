@@ -20,9 +20,9 @@ class DomainsTest extends TestCase
     public function __construct($name = null, array $data = [], $dataName = '')
     {
         parent::__construct($name, $data, $dataName);
-        putenv('DB_DEFAULT=sqlite_testing');
+        putenv('DB_DEFAULT=testing');
         $db = app('db');
-        $this->testDb = $db->connection('sqlite_testing');
+        $this->testDb = $db->connection('testing');
     }
 
     /**
