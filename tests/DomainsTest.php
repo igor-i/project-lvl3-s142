@@ -37,6 +37,12 @@ class DomainsTest extends TestCase
 
     public function testApplication()
     {
+        DB::table('domains')->insertGetId(
+            [
+                'name' => 'http://test.com',
+                'created_at' => Carbon::now()
+            ]
+        );
         $response = $this->call('GET', 'domains');
         $this->assertEquals(200, $response->status());
     }
