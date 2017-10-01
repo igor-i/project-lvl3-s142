@@ -2,6 +2,15 @@ language: php
 php:
   - '7.1'
 
+env:
+  global:
+    - APP_ENV="testing"
+    - DB_CONNECTION="sqlite"
+    - DB_DATABASE=":memory:"
+    - DB_PREFIX=""
+    - CACHE_DRIVER="array"
+    - QUEUE_DRIVER="sync"
+
 install:
   - composer self-update
   - make install
