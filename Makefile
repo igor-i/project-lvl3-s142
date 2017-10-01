@@ -1,7 +1,8 @@
 lint:
 	composer run-script phpcs -- --standard=PSR2 public routes tests
 test:
-	env DB_CONNECTION=testing
+	env DB_CONNECTION="sqlite"
+	env DB_DATABASE=":memory:"
 	php artisan migrate
 	phpunit
 install:
