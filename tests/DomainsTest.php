@@ -22,7 +22,7 @@ class DomainsTest extends TestCase
     public function testForm()
     {
         $this->post('/domains', ['url' => 'http://ya.ru']);
-        $this->seeInDatabase('domains', ['name' => 'http://ya.ru']);
+        $this->seeInDatabase('/domains', ['name' => 'http://ya.ru']);
     }
 
     public function testApplication()
