@@ -8,7 +8,7 @@ env:
     - DB_CONNECTION="sqlite"
     - DB_DATABASE=":memory:"
     - DB_PREFIX=""
-    - CACHE_DRIVER="array"
+    - CACHE_DRIVER="file"
     - QUEUE_DRIVER="sync"
 
 install:
