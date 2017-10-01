@@ -8,16 +8,16 @@ class DomainsTest extends TestCase
 {
     public function setUp()
     {
-//        putenv('DB_CONNECTION=testing');
+        putenv('DB_CONNECTION=testing');
         parent::setUp();
         Artisan::call('migrate');
     }
-//
-//    public function tearDown()
-//    {
-//        Artisan::call('migrate:reset');
-//        parent::tearDown();
-//    }
+
+    public function tearDown()
+    {
+        Artisan::call('migrate:reset');
+        parent::tearDown();
+    }
 
     public function testForm()
     {
