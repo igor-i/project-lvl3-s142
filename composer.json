@@ -10,7 +10,8 @@
         "vlucas/phpdotenv": "~2.2",
         "csanquer/pdo-service-provider": "~1.1dev",
         "guzzlehttp/guzzle": "~6.0",
-        "doctrine/dbal": "*"
+        "doctrine/dbal": "*",
+        "imangazaliev/didom": "*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
