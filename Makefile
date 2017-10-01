@@ -1,8 +1,6 @@
 lint:
 	composer run-script phpcs -- --standard=PSR2 public routes tests
 test:
-	env
-	php artisan migrate
 	phpunit
 install:
 	composer install
