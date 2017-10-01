@@ -4,12 +4,12 @@ php:
 
 env:
   global:
-#    - APP_ENV="testing"
-#    - DB_CONNECTION="sqlite"
-#    - DB_DATABASE=":memory:"
-#    - DB_PREFIX=""
-#    - CACHE_DRIVER="file"
-#    - QUEUE_DRIVER="sync"
+    - APP_ENV="testing"
+    - DB_CONNECTION="sqlite"
+    - DB_DATABASE=":memory:"
+    - DB_PREFIX=""
+    - CACHE_DRIVER="file"
+    - QUEUE_DRIVER="sync"
 
 install:
   - composer self-update
