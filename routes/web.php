@@ -12,13 +12,12 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Queue;
+use Illuminate\Support\Facades\Artisan;
 
 use Carbon\Carbon;
 
-use GuzzleHttp\Client;
-
-use DiDom\Document;
-use DiDom\Query;
+use App\Jobs\DoWebpageRequestJob;
 
 /*
  * Home
@@ -32,6 +31,10 @@ $router->get('/', ['as' => 'home', function () use ($router) {
  * Domains/{id}
  */
 $router->get('domains/{id}', ['as' => 'domains.show', function ($id) {
+    // TODO ВНИМАНИЕ! Здесь вручную выполняются задания из очереди, это не правильно!
+    // В нормальном приложении задания из очереди должны отслеживаться Супервизором или выполняться по расписанию в cron
+    // (но в Heroku планировщик платный, поэтому в учебном проекте решил вставить такой жуткий костыль)
+    Artisan::call('queue:work', ['--once' => true]);
     $domain = DB::table('domains')->where('id', $id)->first();
 
     return view('domain', ['domain' => $domain]);
@@ -50,38 +53,19 @@ $router->get('domains', ['as' => 'domains.index', function () {
  * Form
  */
 $router->post('domains', ['as' => 'domains.store', function (Request $request) {
+    // валидация формы
     $this->validate($request, ['url' => 'active_url']);
 
-    $url = $request->input('url');
-    $client = new Client(['base_uri' => $url]);
-    $response = $client->request('GET');
-    $code = (int) $response->getStatusCode();
-    if ($response->hasHeader('Content-Length')) {
-        $contentLength = (int) $response->getHeaderLine('Content-Length');
-    } else {
-        $contentLength = null;
-    }
-    $body = (string) $response->getBody();
-
-    $dom = new Document($body);
-    $h1Text = empty($h1 = $dom->first('h1')) ? null : $h1->text();
-    $keywordsContent =
-        empty($keywords = $dom->first('meta[name=keywords]')) ? null : $keywords->getAttribute('content');
-    $descriptionContent =
-        empty($description = $dom->first('meta[name=description]')) ? null : $description->getAttribute('content');
-
+    // сохраняем url в базу
     $id = DB::table('domains')->insertGetId(
         [
-            'name' => $url,
-            'content_length' => $contentLength,
-            'code' => $code,
-            'body' => $body,
-            'h1' => $h1Text,
-            'keywords' => $keywordsContent,
-            'description' => $descriptionContent,
+            'name' => $request->input('url'),
             'created_at' => Carbon::now()
         ]
     );
+
+    // ставим задание в очередь (задание запрашивает url и собирает информацию по странице)
+    Queue::push(new DoWebpageRequestJob($id));
 
     return redirect()->route('domains.show', ['id' => $id]);
 }]);
