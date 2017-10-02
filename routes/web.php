@@ -34,7 +34,7 @@ $router->get('domains/{id}', ['as' => 'domains.show', function ($id) {
     // TODO ВНИМАНИЕ! Здесь вручную выполняются задания из очереди, это не правильно!
     // В нормальном приложении задания из очереди должны отслеживаться Супервизором или выполняться по расписанию в cron
     // (но в Heroku планировщик платный, поэтому в учебном проекте решил вставить такой жуткий костыль)
-//    Artisan::call('queue:work', ['--once' => true]);
+    Artisan::call('queue:work', ['--once' => true]);
     $domain = DB::table('domains')->where('id', $id)->first();
 
     return view('domain', ['domain' => $domain]);
