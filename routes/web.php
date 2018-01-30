@@ -23,7 +23,6 @@ use App\Jobs\DoWebpageRequestJob;
  * Home
  */
 $router->get('/', ['as' => 'home', function () use ($router) {
-
     return view('home');
 }]);
 
